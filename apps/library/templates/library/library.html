@@ -1,9 +1,35 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block title %}
     Library|Home
 {% endblock %}
 
+{% block style %}
+    <link rel="stylesheet" href="{% static "library/css/library.css" %}">
+{% endblock %}
+
 {% block content %}
-    <h1>{{ test }}</h1>
+    <header>
+            <nav id="navbar">
+
+                <div id="logo">
+                    <a href="{% url "home" %}"><img src="{% static "library/images/logo.png" %}" alt="logo"></a>
+                </div>
+
+                <div id="nav-menu">
+                    <ul>
+                        <li><a href="">Dashboard</a></li>
+                        <li><a href="">All Books</a></li>
+                        <li><a href="">Categories</a></li>
+                        <li><a href="">Wishlist</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-btn">
+                    <button class="nav-btn-auth">Sign Up</button>
+                    <button class="nav-btn-auth">Sign In</button>
+                </div>
+            </nav>
+    </header>
 {% endblock %}
