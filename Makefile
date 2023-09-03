@@ -1,29 +1,29 @@
 runserver:
-	python3 -m manage runserver
+	python -m manage runserver
 
 makemigrations:
-	python3 -m manage makemigrations
+	python -m manage makemigrations
 
 migrate:
-	python3 -m manage migrate
+	python -m manage migrate
 
 shell:
-	python3 -m manage shell
+	python -m manage shell
 
 install:
 	pip install -r requirements.txt
 
 showmigrations:
-	python3 -m manage.py showmigrations
+	python -m manage.py showmigrations
 
 sqlmigrate:
-	python3 -m manage sqlmigrate $(app) $(migration)
+	python -m manage sqlmigrate $(app) $(migration)
 
 createsuperuser:
-	python3 -m manage createsuperuser
+	python -m manage createsuperuser
 
 rollback:
-	python3 -m manage migrate $(app) $(migration)
+	python -m manage migrate $(app) $(migration)
 
 startapp:
-	python3 -m manage startapp $(app)
+	python -m manage startapp $(app)
