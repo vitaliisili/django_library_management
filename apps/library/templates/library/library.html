@@ -11,25 +11,46 @@
 
 {% block content %}
     <header>
-            <nav id="navbar">
+        <nav id="navbar">
 
-                <div id="logo">
-                    <a href="{% url "home" %}"><img src="{% static "library/images/logo.png" %}" alt="logo"></a>
-                </div>
+            <div id="logo">
+                <a href="{% url "home" %}"><img src="{% static "library/images/logo.png" %}" alt="logo"></a>
+            </div>
 
-                <div id="nav-menu">
-                    <ul>
-                        <li><a href="">Dashboard</a></li>
-                        <li><a href="">All Books</a></li>
-                        <li><a href="">Categories</a></li>
-                        <li><a href="">Wishlist</a></li>
-                    </ul>
-                </div>
+            <div id="nav-menu">
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">All Books</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">Become A Borrower</a></li>
+                </ul>
+            </div>
 
-                <div class="nav-btn">
-                    <button class="nav-btn-auth">Sign Up</button>
-                    <button class="nav-btn-auth">Sign In</button>
+            <div class="nav-btn">
+                <button class="nav-btn-auth">Sign Up</button>
+                <button class="nav-btn-auth">Sign In</button>
+            </div>
+        </nav>
+
+        <div id="hero">
+            <img class="hero-rain" src="{% static "library/images/rain.png" %}" alt="rain">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <div class="hero-title-wrapper">
+                        <p>Let's <span class="hero-title__red">Read</span></p>
+                        <p>Together</p>
+                    </div>
+                    <div class="hero-text">
+                        <p>Unlock Worlds, One Page at a Time: Immerse Yourself in the Enchanting Magic of Books and
+                            Explore
+                            Limitless Adventures!</p>
+                    </div>
                 </div>
-            </nav>
+                <div class="hero-image">
+                    <img src="{% static "library/images/old-man.png" %}" alt="old-man">
+                </div>
+            </div>
+        </div>
+
     </header>
 {% endblock %}
