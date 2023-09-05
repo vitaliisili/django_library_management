@@ -1,0 +1,24 @@
+{% load static %}
+
+<nav id="navbar">
+    <div id="logo">
+        <a href="{% url "home" %}">
+            <img src="{% static "library/images/logo.png" %}" alt="logo">
+            <span class="logo-text"><span class="logo-text__red">Lib</span><span class="logo-text__white">ra</span>ry</span>
+        </a>
+    </div>
+
+    <div id="nav-menu">
+        <ul>
+            <li class="{% if 'dashboard' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}">Dashboard</a></li>
+            <li class="{% if 'all-books' in request.path %}active{% endif %}"><a href="{% url "all-books" %}">All Books</a></li>
+            <li class="{% if 'wishlist' in request.path %}active{% endif %}"><a href="#">Wishlist</a></li>
+            <li class="{% if 'become-a-barrower' in request.path %}active{% endif %}"><a href="#">Become A Borrower</a></li>
+        </ul>
+    </div>
+
+    <div class="nav-btn">
+        <button class="nav-btn-auth nav-btn-signin">Sign Up</button>
+        <button class="nav-btn-auth nav-btn-login">Sign In</button>
+    </div>
+</nav>

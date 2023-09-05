@@ -1,0 +1,11 @@
+<div id="left-menu">
+    <ul>
+        <li class="{% if 'dashboard' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}"><span class="material-symbols-outlined">bar_chart_4_bars</span><span class="menu-text">Dashboard</span></a></li>
+        <li class="{% if 'bookshelf' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}"><span class="material-symbols-outlined">shelves</span><span class="menu-text">My Books</span></a></li>
+        <li class="{% if 'borrowed-books' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}"><span class="material-symbols-outlined">menu_book</span><span class="menu-text">Borrowed Books</span></a></li>
+        <li class="{% if 'lent-books' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}"><span class="material-symbols-outlined">auto_stories</span><span class="menu-text">Lent Books</span></a></li>
+        <li class="{% if 'orders' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}"><span class="material-symbols-outlined">list_alt</span><span class="menu-text">Orders</span></a></li>
+        <li class="{% if 'profile' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}"><span class="material-symbols-outlined">account_circle</span><span class="menu-text">Profile</span></a></li>
+        <li class="{% if 'settings' in request.path %}active{% endif %}"><a href="{% url "dashboard" %}"><span class="material-symbols-outlined">settings</span><span class="menu-text">Settings</span></a></li>
+    </ul>
+</div>

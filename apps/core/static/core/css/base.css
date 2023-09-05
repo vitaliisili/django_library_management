@@ -3,3 +3,137 @@ body {
     background: radial-gradient(circle at top, #287f95, #071b1c) no-repeat fixed;
     color: #ffffff;
 }
+
+header {
+    height: 100vh;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffffff;
+    height: 100px;
+    position: relative;
+}
+
+#logo a {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    width: 30px;
+    height: 30px;
+}
+
+#logo .logo-text {
+    margin-left: 10px;
+    font-family: "Indie Flower", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #26bcff;
+}
+
+#logo .logo-text .logo-text__red {
+    color: #ff5151;
+}
+
+#logo .logo-text .logo-text__white {
+    color: #ffffff;
+}
+
+
+#nav-menu ul {
+    display: flex;
+}
+
+#nav-menu ul li {
+    margin: 0 20px 0 20px;
+    font-family: 'Itim', cursive;
+    font-size: 20px;
+    text-shadow: 5px 5px 10px rgba(8, 8, 51, 0.7);
+}
+
+#nav-menu ul li:hover {
+    transition: all 0.2s;
+    color: #ff5151;
+}
+
+.nav-btn .nav-btn-auth {
+    padding: 8px 32px;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    background-color: transparent;
+    color: whitesmoke;
+    font-family: 'Itim', cursive;
+    font-size: 18px;
+    text-shadow: 5px 7px 12px rgba(8, 8, 51, 0.7);
+}
+
+.nav-btn .nav-btn-auth:hover {
+    border: 1px solid #26bcff;;
+    color: #a5e7e7;
+    box-shadow: 0 5px 10px rgba(241, 236, 236, 0.14);
+}
+
+.nav-btn .nav-btn-signin {
+    margin-right: 5px;
+}
+
+.nav-btn .nav-btn-login {
+
+}
+
+#nav-bottom-line {
+    width: 90%;
+    height: 1px;
+    background-color: #fdfdfd;
+
+}
+
+.active {
+    color: #ff5151;
+}
+
+.main {
+    height: calc(100% - 100px);
+    /*border: 1px solid red;*/
+    display: flex;
+}
+
+#left-menu {
+    width: 250px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    padding-top: 120px;
+    font-family: 'Itim', cursive;
+    font-size: 1.5rem;
+    /*background-color: #13cee7;*/
+    border-right: 1px solid #ffffff;
+}
+
+#left-menu ul li {
+    margin: 30px 0;
+    padding: 10px 0;
+}
+
+#left-menu ul li:hover {
+    color: #ff5151;
+}
+
+#left-menu ul li a {
+    display: flex;
+    text-shadow: 5px 7px 12px rgba(8, 8, 51, 0.7);
+}
+
+#left-menu ul li a .menu-text {
+    margin-left: 10px;
+}
+
+.main-content {
+    width: 100%;
+    padding: 20px;
+}

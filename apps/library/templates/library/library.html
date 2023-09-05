@@ -11,26 +11,7 @@
 
 {% block content %}
     <header>
-        <nav id="navbar">
-
-            <div id="logo">
-                <a href="{% url "home" %}"><img src="{% static "library/images/logo.png" %}" alt="logo"></a>
-            </div>
-
-            <div id="nav-menu">
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">All Books</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">Become A Borrower</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-btn">
-                <button class="nav-btn-auth">Sign Up</button>
-                <button class="nav-btn-auth">Sign In</button>
-            </div>
-        </nav>
+        {% include "core/components/navbar.html" %}
 
         <div id="hero">
             <img class="hero-rain" src="{% static "library/images/rain.png" %}" alt="rain">

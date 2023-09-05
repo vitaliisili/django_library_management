@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "library/css/dashboard.css" %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock %}
+
+{% block content %}
+    {% include "core/components/navbar.html" %}
+    <main class="main">
+        {% include "core/components/left-menu.html" %}
+        <div class="main-content dashboard-content">
+            <h1>Dashboard Statistic</h1>
+        </div>
+    </main>
+{% endblock %}
