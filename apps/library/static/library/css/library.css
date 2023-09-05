@@ -1,6 +1,5 @@
 header {
     height: 100vh;
-    /*overflow: hidden;*/
 }
 
 #navbar {
@@ -9,11 +8,12 @@ header {
     justify-content: space-between;
     border-bottom: 1px solid #ffffff;
     height: 100px;
+    position: relative;
 }
 
 #logo img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    /*height: 60px;*/
 }
 
 #nav-menu ul {
@@ -28,22 +28,25 @@ header {
 
 
 .nav-btn .nav-btn-auth {
-    padding: 5px 20px;
+    padding: 10px 20px;
     border: 1px solid #ffffff;
     border-radius: 25px;
     background-color: transparent;
     color: whitesmoke;
+    font-family: 'Itim', cursive;
 }
 
 #nav-bottom-line {
     width: 90%;
     height: 1px;
     background-color: #fdfdfd;
+
 }
 
 #hero {
     position: relative;
     height: calc(100% - 100px);
+    z-index: 99;
 }
 
 #hero .hero-rain {
@@ -60,11 +63,23 @@ header {
     height: 100%;
 }
 
+.hero-title {
+    margin-top: 160px;
+}
+
 .hero-title-wrapper p {
     font-family: 'Dangrek', cursive;
     font-size: 145px;
     text-shadow: 5px 5px 18px rgba(7, 27, 28, 0.7);
     line-height: 120px;
+}
+
+.hero-text {
+    margin-top: 40px;
+    font-family: 'Itim', cursive;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    max-width: 650px;
 }
 
 .hero-title-wrapper .hero-title__red {
