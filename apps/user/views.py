@@ -13,4 +13,8 @@ def signup(request):
             return redirect('dashboard')
     else:
         form = SignupForm()
-    return render(request, 'user/signup.html', {'form': form})
+    return render(request, 'user/sign-up.html', {'form': form})
+
+
+def signin(request):
+    return render(request, "user/sign-in.html")

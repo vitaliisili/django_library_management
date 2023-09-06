@@ -12,7 +12,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 2px solid #26bcff;
     height: 100px;
     position: relative;
 }
@@ -72,7 +72,7 @@ header {
 }
 
 .nav-btn .nav-btn-auth:hover {
-    border: 1px solid #26bcff;;
+    border: 1px solid #26bcff;
     color: #a5e7e7;
     box-shadow: 0 5px 10px rgba(241, 236, 236, 0.14);
 }
@@ -82,13 +82,6 @@ header {
 }
 
 .nav-btn .nav-btn-login {
-
-}
-
-#nav-bottom-line {
-    width: 90%;
-    height: 1px;
-    background-color: #fdfdfd;
 
 }
 
@@ -103,16 +96,14 @@ header {
 }
 
 #left-menu {
-    width: 250px;
+    min-width: 250px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
     padding-top: 120px;
     font-family: 'Itim', cursive;
     font-size: 1.5rem;
-    /*background-color: #13cee7;*/
-    border-right: 1px solid #ffffff;
+    border-right: 2px solid #26bcff;
 }
 
 #left-menu ul li {

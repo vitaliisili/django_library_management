@@ -9,12 +9,48 @@ class LibraryHomeView(TemplateView):
 
 class DashboardView(View):
     def get(self, request):
-        return render(request, "library/dashboard.html", {
+        return render(request, "library/statistic.html", {
 
         })
+
 
 class AllBooksView(View):
     def get(self, request):
         return render(request, "library/all-books.html", {
+
+        })
+
+
+class MyBooksView(View):
+    def get(self, request):
+        return render(request, "library/my-books.html", {
+
+        })
+
+
+class BorrowedBooksView(View):
+    def get(self, request):
+        return render(request, "library/borrowed-books.html", {
+
+        })
+
+
+class LentBooksView(View):
+    def get(self, request):
+        return render(request, "library/lent-books.html", {
+
+        })
+
+
+class ProfileView(View):
+    def get(self, request):
+        return render(request, "library/profile.html", {
+
+        })
+
+
+class SettingsView(View):
+    def get(self, request):
+        return render(request, "library/settings.html", {
 
         })

@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static "library/css/dashboard.css" %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 {% endblock %}
 
@@ -15,7 +14,9 @@
     <main class="main">
         {% include "core/components/left-menu.html" %}
         <div class="main-content dashboard-content">
-            <h1>Dashboard Statistic</h1>
+            {% block main-content%}
+
+            {% endblock %}
         </div>
     </main>
 {% endblock %}
