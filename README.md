@@ -133,11 +133,19 @@ Thank you for your interest in contributing to our project! We welcome contribut
 - Write clear and concise code with meaningful comments where necessary.
 - Ensure your code is properly formatted and indented.
 
-### Communication
+## Communication
 
 If you have any questions, concerns, or need assistance, please don't hesitate to reach out to us.
 We appreciate your contributions and look forward to working with you!
 
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). 
+
+The MIT License is a permissive open-source license that allows you to use, modify, 
+and distribute this software for any purpose. It comes with no warranty or liability. 
+Please see the [LICENSE](LICENSE) file for more details.
 
 Thank you for your interest in `Django Library Management`! We hope you find it valuable and enjoy using it. 
 
