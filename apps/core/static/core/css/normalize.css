@@ -125,3 +125,7 @@ textarea {
 [hidden] {
     display: none;
 }
+
+table {
+    border-collapse: collapse;
+}

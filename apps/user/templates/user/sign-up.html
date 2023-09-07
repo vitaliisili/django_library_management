@@ -15,12 +15,9 @@
         <form id="sign-up-form" class="auth-form" method="POST">
             {% csrf_token %}
             {% if form.errors %}
-                <div id="form-modal">
-{#                {% for error in form.errors.items %}#}
-{#                    <p>{{ error|escape }}</p>#}
-{#                {% endfor %}#}
-                {{ form.errors }}
-                </div>
+                <ul id="form-modal">
+                    {{ form.errors }}
+                </ul>
             {% endif %}
 
             <div class="input-wrapper">

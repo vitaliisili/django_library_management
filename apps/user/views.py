@@ -1,20 +1,27 @@
 from django.contrib.auth import login
-from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-from apps.user.forms import SignupForm
-
-
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('dashboard')
-    else:
-        form = SignupForm()
-    return render(request, 'user/sign-up.html', {'form': form})
+from apps.user.forms import SignupForm, SigninForm
 
 
-def signin(request):
-    return render(request, "user/sign-in.html")
+class SignUpView(CreateView):
+    form_class = SignupForm
+    template_name = 'user/sign-up.html'
+    success_url = reverse_lazy('dashboard')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        login(self.request, self.object)
+        return response
+
+
+class SignInView(LoginView):
+    login = 'sign-in'
+    template_name = 'user/sign-in.html'
+    authentication_form = SigninForm
+
+
+class UserLogoutView(LogoutView):
+    logout = 'logout'
