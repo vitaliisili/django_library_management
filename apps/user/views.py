@@ -1,9 +1,12 @@
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
+from apps.library.models import Book, Category, Author
 from apps.user.forms import SignupForm, SigninForm
+from config import settings
 
 
 class SignUpView(CreateView):
@@ -25,3 +28,9 @@ class SignInView(LoginView):
 
 class UserLogoutView(LogoutView):
     logout = 'logout'
+
+
+def test(request):
+    return render(request, 'user/test.html', {
+
+    })

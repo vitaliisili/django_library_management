@@ -11,6 +11,32 @@
 {% block content %}
     {% include "core/components/navbar.html" %}
     <section id="all-books">
-        <h1>All Books</h1>
+        <input type="text" id="input">
+        <button onclick="getbooks()">Get Books</button>
+        <div id="output"></div>
     </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        async function getbooks() {
+            const getBooksByCategory = async (category) => {
+                try {
+                    const response = await fetch(`https://openlibrary.org/subjects/${category}.json`);
+                    const books = await response.json();
+                    return books;
+                } catch (error) {
+                    console.log(error);
+                    // Handle any potential errors here
+                    return null;
+                }
+            };
+
+// Example usage:
+            const category = "drama";
+            const books = await getBooksByCategory(category);
+            console.log(books);
+
+        }
+    </script>
 {% endblock %}
