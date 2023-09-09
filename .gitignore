@@ -143,3 +143,5 @@ pgadmin_data
 
 # Test database
 */test.db
+
+db_backup
