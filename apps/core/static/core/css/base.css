@@ -15,6 +15,7 @@ header {
     border-bottom: 2px solid #26bcff;
     height: 100px;
     position: relative;
+    z-index: 100;
 }
 
 #logo a {

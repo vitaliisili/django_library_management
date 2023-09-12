@@ -1,42 +1,69 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block title %}
     All Books
 {% endblock %}
 
 {% block style %}
-
+    <link rel="stylesheet" href="{% static 'library/css/all-books.css' %}">
 {% endblock %}
 
 {% block content %}
     {% include "core/components/navbar.html" %}
     <section id="all-books">
-        <input type="text" id="input">
-        <button onclick="getbooks()">Get Books</button>
-        <div id="output"></div>
+        <div class="search-section">
+            <form action="">
+                <input id="search-input" type="search" placeholder="Insert a book name and press enter">
+                <button type="submit" class="search-icon"><span class="material-symbols-outlined">search</span></button>
+            </form>
+        </div>
+
+        <div class="book-list">
+            {% for category in categories %}
+                <div class="category">
+                    <div class="category-name">{{ category.name }}</div>
+                    <a href="#">
+                        <button class="view-all">View All</button>
+                    </a>
+                </div>
+
+                <div class="book-section">
+                    {% for book in category.books.all|slice:':10' %}
+                        <div class="book-card">
+                            <div class="card-cover">
+                                <div class="book-cover-detail">
+                                    <a href="">
+                                        <button>More details</button>
+                                    </a>
+                                </div>
+                                <img src="{{ book.image_url_l }}" alt="Image"
+                                     onload="checkImageSize(this, '{% static 'core/images/book_cover.jpg' %}')">
+                            </div>
+                            <div class="card-title">
+                                <a href=""><p>{{ book.title }}</p></a>
+                            </div>
+
+                            <div class="book-author">
+                                <p>By {{ book.author.all.first.name }}</p>
+                            </div>
+
+                            <div class="add-to-library">
+                                <button>Add To Library</button>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+        </div>
     </section>
 {% endblock %}
 
 {% block js %}
-    <script>
-        async function getbooks() {
-            const getBooksByCategory = async (category) => {
-                try {
-                    const response = await fetch(`https://openlibrary.org/subjects/${category}.json`);
-                    const books = await response.json();
-                    return books;
-                } catch (error) {
-                    console.log(error);
-                    // Handle any potential errors here
-                    return null;
-                }
-            };
+    <script src="{% static 'library/js/all-books.js' %}">
 
-// Example usage:
-            const category = "drama";
-            const books = await getBooksByCategory(category);
-            console.log(books);
 
-        }
     </script>
 {% endblock %}
