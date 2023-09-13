@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 
-from apps.library.models import Category
+from apps.library.models import Category, Book
 from config import settings
 
 
@@ -21,12 +21,19 @@ class DashboardView(LoginRequiredMixin, View):
 class AllBooksView(View):
     categories = Category.objects.all()
     books = categories[0].books.all()
+
     # print(books[500].author.all()[0].name)
 
     def get(self, request):
         return render(request, "library/all-books.html", {
             "categories": self.categories
         })
+
+
+class BookDetailView(DetailView):
+    model = Book
+    template_name = 'library/book-detail.html'
+    context_object_name = 'book'
 
 
 class MyBooksView(LoginRequiredMixin, View):
