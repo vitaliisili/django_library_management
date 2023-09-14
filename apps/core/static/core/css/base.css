@@ -62,13 +62,13 @@ header {
 }
 
 .nav-btn .nav-btn-auth {
-    padding: 8px 32px;
+    padding: 8px 28px;
     border: 1px solid #ffffff;
     border-radius: 25px;
     background-color: transparent;
     color: whitesmoke;
     font-family: 'Itim', cursive;
-    font-size: 18px;
+    font-size: 1rem;
     text-shadow: 5px 7px 12px rgba(8, 8, 51, 0.7);
 }
 
