@@ -27,6 +27,7 @@ class Author(BaseModel):
 class Book(BaseModel):
     title = models.CharField(max_length=300)
     author = models.ManyToManyField(Author, related_name='books')
+    description = models.TextField(null=True)
     year_of_publication = models.CharField(max_length=4)
     publisher = models.CharField(max_length=400, null=True)
     image_url_m = models.URLField(null=True)

@@ -1,3 +1,9 @@
+.detail-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 #book-detail {
     min-height: calc(100% - 100px);
     padding: 20px 0;
@@ -19,3 +25,74 @@
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
+
+#detail {
+    display: flex;
+    font-family: Itim, cursive;
+}
+
+#detail .book-info {
+    margin-left: 40px;
+}
+
+#detail .book-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #26bcff;
+}
+
+
+.book-info .field-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #26bcff;
+}
+
+.book-info .book-info_field {
+    margin-top: 20px;
+}
+
+.book-info .book-author-detail {
+    margin-top: 40px;
+}
+
+.book-info .book-description {
+    margin-top: 40px;
+}
+
+.book-info .description-field-title {
+    font-size: 1.4rem;
+    color: #26bcff;
+}
+
+.description-content {
+    border: 1px solid red;
+    margin-top: 10px;
+    max-width: 40vw;
+    min-width: 40vw;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+
+#like-more {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+#like-more .like-more-field {
+    font-family: Itim, cursive;
+    font-size: 1.5rem;
+    color: #26bcff;
+}
+
+
+
+
+
+
+
+
+
+
+

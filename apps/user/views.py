@@ -31,6 +31,26 @@ class UserLogoutView(LogoutView):
 
 
 def test(request):
+    import requests
+    books = Book.objects.filter(description__isnull=True)
+
+    for book in books:
+        title = book.title.replace(' ', '%')
+        try:
+            req = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={title}&maxResults=1')
+            data = req.json()
+            description = data['items'][0]['volumeInfo']['description']
+
+            current_book = Book.objects.get(pk=book.id)
+            current_book.description = description
+            current_book.save()
+            print("DONE: ", book.id)
+        except Exception as err:
+            pass
+            print('ERROR:', err)
+            print("NOT FOUND DESCRIPTION: ", book.id)
+
+
     return render(request, 'user/test.html', {
 
     })

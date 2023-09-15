@@ -1,7 +1,10 @@
+from functools import reduce
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 
 from apps.library.models import Category, Book
 from config import settings
@@ -18,22 +21,29 @@ class DashboardView(LoginRequiredMixin, View):
         })
 
 
-class AllBooksView(View):
-    categories = Category.objects.all()
-    books = categories[0].books.all()
-
-    # print(books[500].author.all()[0].name)
-
-    def get(self, request):
-        return render(request, "library/all-books.html", {
-            "categories": self.categories
-        })
+class AllBooksView(ListView):
+    model = Category
+    template_name = 'library/all-books.html'
+    context_object_name = 'categories'
 
 
 class BookDetailView(DetailView):
     model = Book
     template_name = 'library/book-detail.html'
     context_object_name = 'book'
+
+    def get_books(self):
+        books = Book.objects.filter(
+            reduce(lambda x, y: x | y,
+                   [Q(title__icontains=word) for word in self.object.title.split()]))[:10]
+        if books.count < 10:
+            books_by_category = Book.objects.filter(category_id=self.object.id)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['books'] = Book.objects.filter(
+            reduce(lambda x, y: x | y,
+                   [Q(title__icontains=word) for word in self.object.title.split()]))[:10]
+        return context
 
 
 class MyBooksView(LoginRequiredMixin, View):
