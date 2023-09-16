@@ -125,3 +125,41 @@ AUTH_USER_MODEL = "user.User"
 LOGIN_URL = 'sign-in'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'home'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'verbose',
+            'filters': ['debug']
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'level': 'INFO',
+            'formatter': 'verbose',
+            'filename': BASE_DIR / 'logs' / 'logging.log'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} :: {message}',
+            'style': '{'
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{'
+        }
+    },
+    'filters': {
+        'debug': {
+            '()': 'django.utils.log.RequireDebugTrue'
+        }
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}

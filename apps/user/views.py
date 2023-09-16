@@ -4,8 +4,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
-from apps.library.models import Book, Category, Author
+from apps.library.models import Book, Category, Author, Library
 from apps.user.forms import SignupForm, SigninForm
+from apps.user.models import User
 from config import settings
 
 
@@ -17,6 +18,8 @@ class SignUpView(CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         login(self.request, self.object)
+        library = Library(user=self.object)
+        library.save()
         return response
 
 
@@ -31,24 +34,27 @@ class UserLogoutView(LogoutView):
 
 
 def test(request):
-    import requests
-    books = Book.objects.filter(description__isnull=True)
-
-    for book in books:
-        title = book.title.replace(' ', '%')
-        try:
-            req = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={title}&maxResults=1')
-            data = req.json()
-            description = data['items'][0]['volumeInfo']['description']
-
-            current_book = Book.objects.get(pk=book.id)
-            current_book.description = description
-            current_book.save()
-            print("DONE: ", book.id)
-        except Exception as err:
-            pass
-            print('ERROR:', err)
-            print("NOT FOUND DESCRIPTION: ", book.id)
+    library = Library.objects.create()
+    library.user_id = User.objects.get(pk=1).id
+    library.save()
+    # import requests
+    # books = Book.objects.filter(description__isnull=True)
+    #
+    # for book in books:
+    #     title = book.title.replace(' ', '%')
+    #     try:
+    #         req = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={title}&maxResults=1')
+    #         data = req.json()
+    #         description = data['items'][0]['volumeInfo']['description']
+    #
+    #         current_book = Book.objects.get(pk=book.id)
+    #         current_book.description = description
+    #         current_book.save()
+    #         print("DONE: ", book.id)
+    #     except Exception as err:
+    #         pass
+    #         print('ERROR:', err)
+    #         print("NOT FOUND DESCRIPTION: ", book.id)
 
 
     return render(request, 'user/test.html', {

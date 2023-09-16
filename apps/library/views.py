@@ -1,13 +1,15 @@
+import logging
 from functools import reduce
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.views.generic import TemplateView, DetailView, ListView
+from apps.library.models import Category, Book, Library
 
-from apps.library.models import Category, Book
-from config import settings
+logger = logging.getLogger(__name__)
 
 
 class LibraryHomeView(TemplateView):
@@ -27,23 +29,46 @@ class AllBooksView(ListView):
     context_object_name = 'categories'
 
 
-class BookDetailView(DetailView):
-    model = Book
-    template_name = 'library/book-detail.html'
-    context_object_name = 'book'
+class BookDetailView(View):
+    def get(self, request, id):
+        logger.info(f"User is authenticated: {request.user.is_authenticated}")
+        book = get_object_or_404(Book, id=id)
+        library = None
 
-    def get_books(self):
+        if request.user.is_authenticated:
+            library = Library.objects.get(user=request.user)
+            logger.info(f'Library owner: {library.user.username}')
+
+        return render(request, 'library/book-detail.html', {
+            'book': book,
+            'books': self.get_books(id),
+            'library': library
+        })
+
+    def post(self, request, id):
+        book = get_object_or_404(Book, id=id)
+        user = request.user
+
+        if not user.is_authenticated:
+            return redirect('sign-in')
+
+        library = Library.objects.get(user=user)
+        library.books.add(book)
+        library.save()
+        return redirect('book-detail', id)
+
+    def get_books(self, id):
+        book = get_object_or_404(Book, id=id)
         books = Book.objects.filter(
-            reduce(lambda x, y: x | y,
-                   [Q(title__icontains=word) for word in self.object.title.split()]))[:10]
-        if books.count < 10:
-            books_by_category = Book.objects.filter(category_id=self.object.id)
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['books'] = Book.objects.filter(
-            reduce(lambda x, y: x | y,
-                   [Q(title__icontains=word) for word in self.object.title.split()]))[:10]
-        return context
+            reduce(lambda x, y: x | y, [Q(title__icontains=word) for word in book.title.split()])).exclude(
+            title=book.title)[:10]
+        if books.count() < 10:
+            logger.warning("Book count are less then 10")
+            books_by_category = Book.objects.filter(
+                category_id=book.category_id).exclude(id=book.id)[:10 - books.count()]
+            return books.union(books_by_category)
+
+        return books
 
 
 class MyBooksView(LoginRequiredMixin, View):
