@@ -39,6 +39,7 @@
     font-size: 2.2rem;
     font-weight: bold;
     color: #26bcff;
+    max-width: 60%;
 }
 
 
@@ -66,7 +67,6 @@
 }
 
 .description-content {
-    border: 1px solid red;
     margin-top: 10px;
     max-width: 40vw;
     min-width: 40vw;
@@ -74,6 +74,34 @@
     overflow: hidden;
 }
 
+.detail-btn .add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #26bcff;
+    border-radius: 24px;
+    padding: 8px 24px;
+    font-family: Itim, cursive;
+    font-size: 1.2rem;
+    color: #18494b;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(31, 198, 220, 0.23) 0 6px 6px;
+}
+
+.detail-btn .add-btn:hover {
+    background-color: #1ea8e7;
+}
+
+.detail-btn .add-btn span {
+    margin-right: 8px;
+}
+
+.detail-btn .add-btn_disabled {
+    background-color: #5a7683;
+}
+
+.detail-btn .add-btn_disabled:hover {
+    background-color: #5a7683;
+}
 
 #like-more {
     margin-top: 60px;

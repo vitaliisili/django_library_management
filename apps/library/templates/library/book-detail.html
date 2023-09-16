@@ -46,7 +46,20 @@
             </div>
 
             <div class="detail-btn">
-                <button>Add to Library</button>
+                <form method="POST" action="{% url 'book-detail' book.id %}">
+                    {% csrf_token %}
+                    {% if library %}
+                        {% if book in library.books.all %}
+                            <button disabled class="add-btn add-btn_disabled">Already Added</button>
+                        {% else %}
+                            <button class="add-btn"><span class="material-symbols-outlined">library_add</span>Add to Library</button>
+                        {% endif %}
+                    {% else %}
+                        <button class="add-btn"><span class="material-symbols-outlined">library_add</span>Add to Library</button>
+                    {% endif %}
+
+                </form>
+
             </div>
 
         </div>
