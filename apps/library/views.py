@@ -71,6 +71,26 @@ class BookDetailView(View):
         return books
 
 
+class CategoryBookListView(ListView):
+    model = Book
+    template_name = 'library/category-books.html'
+    context_object_name = 'books'
+    paginate_by = 20
+
+    def get_queryset(self):
+        category_id = self.kwargs['id']
+        category = Category.objects.get(pk=category_id)
+        return Book.objects.filter(category_id=category.id).order_by('title')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_id = self.kwargs['id']
+        category = Category.objects.get(pk=category_id)
+        context['category'] = category
+        return context
+
+
+
 class MyBooksView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, "library/my-books.html", {

@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    Library
+{% endblock %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'library/css/all-books.css' %}">
+    <link rel="stylesheet" href="{% static 'library/css/category-books.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    {% include 'core/components/navbar.html' %}
+    <section id="category-detail">
+        <div class="category-name">Category: {{ category.name }}</div>
+        <div class="category-description">{{ category.description }}</div>
+    </section>
+
+    <section id="category-books" class="book-section">
+        {% for book in books %}
+            <div class="book-card">
+                <div class="card-cover">
+                    <div class="book-cover-detail">
+                        <a href="{% url 'book-detail' book.id %}">
+                            <button>More details</button>
+                        </a>
+                    </div>
+                    <img src="{{ book.image_url_l }}" alt="Image"
+                         onload="checkImageSize(this, '{% static 'core/images/book_cover.jpg' %}')">
+                </div>
+                <div class="card-title">
+                    <a href=""><p>{{ book.title }}</p></a>
+                </div>
+
+                <div class="book-author">
+                    <p>By {{ book.author.all.first.name }}</p>
+                </div>
+
+                <div class="add-to-library">
+                    <a href="{% url 'book-detail' book.id %}">
+                        <button>Add To Library</button>
+                    </a>
+                </div>
+
+            </div>
+        {% endfor %}
+    </section>
+
+    <div class="pagination">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}"><button>Previous</button></a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}"><button>Next</button></a>
+            {% endif %}
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'library/js/all-books.js' %}"></script>
+{% endblock %}

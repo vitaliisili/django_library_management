@@ -24,7 +24,7 @@
                 <div class="category">
                     <div class="category-name">{{ category.name }}</div>
                     <a href="#">
-                        <button class="view-all">View All</button>
+                        <a href="{% url 'category-books' category.id %}"><button class="view-all">View All</button></a>
                     </a>
                 </div>
 

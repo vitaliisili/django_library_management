@@ -1,0 +1,36 @@
+#category-detail {
+    margin-top: 50px;
+}
+
+.category-description {
+    margin-top: 20px;
+    font-family: Itim, cursive;
+    max-width: 60%;
+}
+
+#category-books {
+    width: 100%;
+    margin-top: 60px;
+    display: inline-grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 30px;
+    row-gap: 60px;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+.pagination {
+    margin-top: 60px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: end;
+}
+
+.pagination button {
+    margin-left: 30px;
+    border-radius: 24px;
+    background-color: #26bcff;
+    color: #ffffff;
+    font-family: Itim, cursive;
+    padding: 8px 24px;
+}
