@@ -1,5 +1,28 @@
 {% extends "library/dashboard.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'library/css/statistic.css' %}">
+{% endblock %}
 
 {% block main-content %}
-    <h1>This is statistic page</h1>
+    <div class="barrow-chart">
+        <canvas id="barrow-chart"></canvas>
+    </div>
+
+    <div class="statistic-charts">
+        <div class="library-chart">
+            <canvas id="library-chart"></canvas>
+        </div>
+
+        <div class="lent-chart">
+            <canvas id="lent-chart"></canvas>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'library/js/charts.js' %}"></script>
 {% endblock %}

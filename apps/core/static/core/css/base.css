@@ -30,7 +30,8 @@ header {
 
 #logo .logo-text {
     margin-left: 10px;
-    font-family: "Indie Flower", sans-serif;
+    /*font-family: "Indie Flower", sans-serif;*/
+    font-family: Itim, cursive;
     font-weight: bold;
     font-size: 24px;
     color: #26bcff;

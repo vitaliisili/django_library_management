@@ -1,13 +1,12 @@
 import logging
 from functools import reduce
-
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.views.generic import TemplateView, DetailView, ListView
 from apps.library.models import Category, Book, Library
+from apps.user.models import User
 
 logger = logging.getLogger(__name__)
 
@@ -16,17 +15,23 @@ class LibraryHomeView(TemplateView):
     template_name = "library/library.html"
 
 
-class DashboardView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, "library/statistic.html", {
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'library/statistic.html'
 
-        })
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # TODO: Pass data for charts
+        return context
 
 
 class AllBooksView(ListView):
     model = Category
     template_name = 'library/all-books.html'
     context_object_name = 'categories'
+
+    def post(self, request):
+        data = request.POST.get('search')
+        return redirect('search-book', search=data)
 
 
 class BookDetailView(View):
@@ -90,12 +95,15 @@ class CategoryBookListView(ListView):
         return context
 
 
+class MyBooksView(LoginRequiredMixin, ListView):
+    model = Book
+    template_name = 'library/my-books.html'
+    context_object_name = 'books'
+    paginate_by = 14
 
-class MyBooksView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, "library/my-books.html", {
-
-        })
+    def get_queryset(self):
+        library = Library.objects.get(user_id=self.request.user.id)  # noqa
+        return library.books.all()
 
 
 class BorrowedBooksView(LoginRequiredMixin, View):
@@ -112,11 +120,10 @@ class LentBooksView(LoginRequiredMixin, View):
         })
 
 
-class ProfileView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, "library/profile.html", {
-
-        })
+class ProfileView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'library/profile.html'
+    context_object_name = 'profile'
 
 
 class SettingsView(LoginRequiredMixin, View):
@@ -124,3 +131,24 @@ class SettingsView(LoginRequiredMixin, View):
         return render(request, "library/settings.html", {
 
         })
+
+
+class SearchBookView(ListView):
+    model = Book
+    template_name = 'library/search-page.html'
+    paginate_by = 20
+    context_object_name = 'books'
+
+    def get_queryset(self):
+        search_words = self.kwargs.get('search').split()
+        query_filter = Q()
+
+        for word in search_words:
+            query_filter |= Q(title__icontains=word)
+
+        books = Book.objects.filter(query_filter)
+        return books
+
+    def post(self, request, search):  # noqa
+        data = request.POST.get('search')
+        return redirect('search-book', search=data)

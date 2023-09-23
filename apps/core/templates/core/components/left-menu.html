@@ -4,7 +4,7 @@
         <li class="{% if 'my-books' in request.path %}active{% endif %}"><a href="{% url "my-books" %}"><span class="material-symbols-outlined">shelves</span><span class="menu-text">My Library</span></a></li>
         <li class="{% if 'borrowed-books' in request.path %}active{% endif %}"><a href="{% url "borrowed-books" %}"><span class="material-symbols-outlined">menu_book</span><span class="menu-text">Borrowed Books</span></a></li>
         <li class="{% if 'lent-books' in request.path %}active{% endif %}"><a href="{% url "lent-books" %}"><span class="material-symbols-outlined">auto_stories</span><span class="menu-text">Lent Books</span></a></li>
-        <li class="{% if 'profile' in request.path %}active{% endif %}"><a href="{% url "profile" %}"><span class="material-symbols-outlined">account_circle</span><span class="menu-text">Profile</span></a></li>
+        <li class="{% if 'profile' in request.path %}active{% endif %}"><a href="{% url "profile" user.id %}"><span class="material-symbols-outlined">account_circle</span><span class="menu-text">Profile</span></a></li>
         <li class="{% if 'settings' in request.path %}active{% endif %}"><a href="{% url "settings" %}"><span class="material-symbols-outlined">settings</span><span class="menu-text">Settings</span></a></li>
     </ul>
 </div>

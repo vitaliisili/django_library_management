@@ -13,8 +13,9 @@
     {% include "core/components/navbar.html" %}
     <section id="all-books">
         <div class="search-section">
-            <form action="">
-                <input id="search-input" type="search" placeholder="Insert a book name and press enter">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input id="search-input" type="search" name="search" placeholder="Insert a book name and press enter">
                 <button type="submit" class="search-icon"><span class="material-symbols-outlined">search</span></button>
             </form>
         </div>

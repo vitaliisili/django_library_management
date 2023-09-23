@@ -1,0 +1,12 @@
+.my-book-title {
+    font-family: Itim, cursive;
+    font-size: 2rem;
+}
+
+#category-books {
+    display: inline-grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 50px 20px;
+    margin-top: 20px;
+}

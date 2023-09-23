@@ -1,30 +1,26 @@
-{% extends "library/dashboard.html" %}
+{% extends 'core/base.html' %}
 {% load static %}
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'library/css/all-books.css' %}">
     <link rel="stylesheet" href="{% static 'library/css/category-books.css' %}">
-    <link rel="stylesheet" href="{% static 'library/css/my-books.css' %}">
+    <link rel="stylesheet" href="{% static 'library/css/search-book.css' %}">
 {% endblock %}
-
 
 {% block title %}
-    My Library
+    Search Books
 {% endblock %}
 
-
-{% block main-content %}
+{% block content %}
+    {% include "core/components/navbar.html" %}
     <section id="all-books">
-        <div class="my-book-title">
-            My Library
+        <div class="search-section">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input id="search-input" type="search" name="search" placeholder="Insert a book name and press enter">
+                <button type="submit" class="search-icon"><span class="material-symbols-outlined">search</span></button>
+            </form>
         </div>
-{#        <div class="search-section">#}
-{#            <form action="" method="POST">#}
-{#                {% csrf_token %}#}
-{#                <input id="search-input" type="search" name="search" placeholder="Insert a book name and press enter">#}
-{#                <button type="submit" class="search-icon"><span class="material-symbols-outlined">search</span></button>#}
-{#            </form>#}
-{#        </div>#}
 
 
         <section id="category-books" class="book-section">
@@ -45,6 +41,12 @@
 
                     <div class="book-author">
                         <p>By {{ book.author.all.first.name }}</p>
+                    </div>
+
+                    <div class="add-to-library">
+                        <a href="{% url 'book-detail' book.id %}">
+                            <button>Add To Library</button>
+                        </a>
                     </div>
 
                 </div>
@@ -69,5 +71,6 @@
 {% endblock %}
 
 {% block js %}
-    <script src="{% static 'library/js/all-books.js' %}"></script>
+    <script src="{% static 'library/js/all-books.js' %}">
+    </script>
 {% endblock %}

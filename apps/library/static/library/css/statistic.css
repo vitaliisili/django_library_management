@@ -1,0 +1,19 @@
+.barrow-chart {
+    min-width: 100%;
+    height: 300px;
+    color: #26bcff;
+}
+
+.statistic-charts {
+    width: 100%;
+    display: flex;
+    margin-top: 60px;
+}
+
+.library-chart {
+    width: 400px;
+}
+
+.lent-chart {
+    flex: 1;
+}
