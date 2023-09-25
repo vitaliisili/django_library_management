@@ -70,6 +70,7 @@ DB_HOST=database_host
 DB_PORT=database_port
 DJANGO_SECRET_KEY=strong_secret_key_min_32_chars
 DJANGO_DEBUG=True
+DATABASE_ENGINE=database-engine
 ```
 Example `.env` file:
 ```dotenv
@@ -80,6 +81,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DJANGO_SECRET_KEY=django-insecure-hj_gk3-=c%e_%yn#o4t4h350raetyse8)%9x3u_po^cfx&269!
 DJANGO_DEBUG=True
+DATABASE_ENGINE=postgresql
 ```
 
 Step 6: Create a new database migrations
