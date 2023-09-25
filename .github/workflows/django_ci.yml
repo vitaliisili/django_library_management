@@ -16,7 +16,6 @@ jobs:
         python-version: ["3.9", "3.10", "3.11"]
     environment:
       name: res
-      url: https://github.com/vitaliisili/django_library_management
 #    env:
 #      DB_NAME: ${{ secrets.DB_NAME }}
 #      DB_USER: ${{ secrets.DB_USER }}
