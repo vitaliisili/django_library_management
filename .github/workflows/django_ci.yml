@@ -16,7 +16,7 @@ jobs:
         python-version: ["3.10"]
     environment:
       name: Django_library_management_env
-#      url: https://github.com/vitaliisili/django_library_management
+      url: https://github.com/vitaliisili/django_library_management
 
     services:
       database:
