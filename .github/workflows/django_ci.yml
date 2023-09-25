@@ -1,4 +1,5 @@
 name: Django CI
+concurrency: dev
 
 on:
   push:
@@ -10,17 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: dev
     strategy:
       fail-fast: false
       matrix:
 #        python-version: ["3.9", "3.10", "3.11"]
         python-version: ["3.10"]
-#    environment:
+    environment: dev
 #      name: dev
 #      url: https://github.com/vitaliisili/django_library_management
-    env:
-      DJANGO_SECRET_KEY: 'django-insecure-hj_gk3-=c%e_%yn#o4t4h350raetyse8)%9x3u_po^cfx&269!'
 
     services:
       database:
