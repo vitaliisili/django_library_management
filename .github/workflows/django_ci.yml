@@ -17,16 +17,16 @@ jobs:
     environment:
       name: res
       url: https://github.com/vitaliisili/django_library_management
-    env:
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DJANGO_SECRET_KEY: ${{ env.DJANGO_SECRET_KEY }}
-      DJANGO_DEBUG: True
-      DISABLE_LOGGING: False
-      DATABASE_ENGINE: postgresql
+#    env:
+#      DB_NAME: ${{ secrets.DB_NAME }}
+#      DB_USER: ${{ secrets.DB_USER }}
+#      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+#      DB_HOST: localhost
+#      DB_PORT: 5432
+#      DJANGO_SECRET_KEY:
+#      DJANGO_DEBUG: True
+#      DISABLE_LOGGING: False
+#      DATABASE_ENGINE: postgresql
 
     services:
       database:
@@ -43,19 +43,19 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Create Log folder and file
-      run: |
-        mkdir logs && touch logs/logging.log
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Test Django Project
-      run: |
-        python -m manage test
+      steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Create Log folder and file
+        run: |
+          mkdir logs && touch logs/logging.log
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test Django Project
+        run: |
+          python -m manage test
