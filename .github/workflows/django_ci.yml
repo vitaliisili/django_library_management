@@ -17,16 +17,16 @@ jobs:
     environment:
       name: res
       url: https://github.com/vitaliisili/django_library_management
-    #    env:
-#      DB_NAME: ${{ secrets.DB_NAME }}
-#      DB_USER: ${{ secrets.DB_USER }}
-#      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-#      DB_HOST: localhost
-#      DB_PORT: 5432
-#      DJANGO_SECRET_KEY: django-insecure-hj_gk3-=c%e_%yn#o4t4h350raetyse8)%9x3u_po^cfx&269!
-#      DJANGO_DEBUG: True
-#      DISABLE_LOGGING: False
-#      DATABASE_ENGINE: postgresql
+    env:
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DJANGO_SECRET_KEY: ${{ env.DJANGO_SECRET_KEY }}
+      DJANGO_DEBUG: True
+      DISABLE_LOGGING: False
+      DATABASE_ENGINE: postgresql
 
     services:
       database:
