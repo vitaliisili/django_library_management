@@ -6,3 +6,5 @@ services:
     container_name: library_management
     ports:
       - 9032:8000
+    env_file:
+      - .env
