@@ -28,6 +28,7 @@ pipeline {
                 DISABLE_LOGGING=credentials('DISABLE_LOGGING')
                 DATABASE_ENGINE=credentials('DATABASE_ENGINE')
                 DJANGO_ALLOWED_HOSTS=credentials('DJANGO_ALLOWED_HOSTS')
+                CSRF_TRUSTED_ORIGINS=credentials('CSRF_TRUSTED_ORIGINS')
             }
             steps {
                 sh 'mkdir logs && touch logging.log'
@@ -41,6 +42,7 @@ pipeline {
                 sh 'echo DISABLE_LOGGING=$DISABLE_LOGGING >> .env'
                 sh 'echo DATABASE_ENGINE=$DATABASE_ENGINE >> .env'
                 sh 'echo DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS >> .env'
+                sh 'echo CSRF_TRUSTED_ORIGINS=$CSRF_TRUSTED_ORIGINS >> .env'
                 sh 'sudo docker-compose -f docker-compose.yml up -d --build'
                 sh 'sudo docker cp library_management:/app/static ./static'
             }
