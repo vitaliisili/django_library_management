@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
 //                 sh 'cat .env'
-                sh 'sudo docker-compose -f docker-compose-prod.yml up -d --build'
+                sh 'sudo docker-compose -f docker-compose.yml up -d --build'
             }
         }
 
