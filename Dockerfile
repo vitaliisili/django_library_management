@@ -14,6 +14,5 @@ COPY . .
 RUN python -m manage collectstatic
 COPY . /static
 
-
 RUN python -m manage makemigrations
 RUN python -m manage migrate
