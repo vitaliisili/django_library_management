@@ -3,9 +3,6 @@ services:
   library_management:
     build: .
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    container_name: library_management
     ports:
       - 9032:8000
-    volumes:
-      - /home/library_management/static:/home/app
-volumes:
-  library-files:

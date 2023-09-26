@@ -43,6 +43,13 @@ pipeline {
                 sh 'echo DATABASE_ENGINE=$DATABASE_ENGINE >> .env'
                 sh 'echo DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS >> .env'
                 sh 'sudo docker-compose -f docker-compose.yml up -d --build'
+                sh 'sudo docker cp library_management:/app/static ./static'
+            }
+        }
+
+        stage('Clear Stopped Containers') {
+            steps {
+                sh 'sudo docker container prune -f'
             }
         }
 
