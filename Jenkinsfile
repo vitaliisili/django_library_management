@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
-                echo 'Build' ${env.JOB_NAME}
+                echo 'Build ${env.JOB_NAME}...'
             }
         }
 
