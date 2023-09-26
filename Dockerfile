@@ -20,7 +20,7 @@ RUN pip install --upgrade pip
 
 # copy whole project to your docker home directory.
 COPY . $DockerHOME
-#COPY ./requirements.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . /app
