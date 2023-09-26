@@ -12,7 +12,6 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 DEBUG = env('DJANGO_DEBUG')
 
-# ALLOWED_HOSTS = []
 ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(' ')
 
 INSTALLED_APPS = [
@@ -94,9 +93,6 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'static',
-# ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # MEDIA_URL = "/media/"
