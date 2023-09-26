@@ -31,7 +31,7 @@ pipeline {
                 DJANGO_ALLOWED_HOSTS=credentials('DJANGO_ALLOWED_HOSTS')
             }
             steps {
-                sh mkdir logs && touch logging.log
+                sh 'mkdir logs && touch logging.log'
                 sh 'echo DB_NAME=$DB_NAME > .env'
                 sh 'echo DB_USER=$DB_USER >> .env'
                 sh 'echo DB_PASSWORD=$DB_PASSWORD >> .env'
