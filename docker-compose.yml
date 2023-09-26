@@ -7,5 +7,5 @@ services:
       - 9032:8000
 #    volumes:
 #      - library-files:/app
-volumes:
-  library-files:
+#volumes:
+#  library-files:

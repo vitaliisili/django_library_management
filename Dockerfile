@@ -10,9 +10,9 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-RUN python -m manage makemigrations
-RUN python -m manage migrate
 RUN python -m manage collectstatic
 
 COPY . .
 
+RUN python -m manage makemigrations
+RUN python -m manage migrate
