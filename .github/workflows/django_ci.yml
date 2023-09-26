@@ -24,6 +24,7 @@ jobs:
       DJANGO_DEBUG: ${{ secrets.DJANGO_DEBUG }}
       DISABLE_LOGGING: ${{ secrets.DISABLE_LOGGING }}
       DATABASE_ENGINE: ${{ secrets.DATABASE_ENGINE }}
+      DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
 
     services:
       database:
