@@ -6,6 +6,6 @@ services:
     ports:
       - 9032:8000
     volumes:
-      - library-files:/app
+      - ~/library_management/static:/app
 volumes:
   library-files:
