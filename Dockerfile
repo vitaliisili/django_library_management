@@ -25,7 +25,7 @@ RUN pip install -r requirements.txt
 
 COPY . $DockerHOME
 RUN python -m manage collectstatic
-COPY /static $DockerHOME
+COPY . $DockerHOME
 
 #RUN python -m manage makemigrations
 #RUN python -m manage migrate
