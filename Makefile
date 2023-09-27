@@ -38,3 +38,6 @@ test:
 
 backup:
 	pg_dump -U $(DB_USER) -d $(DB_NAME) -f $(DB_BACK_UP_DIR)/$(file_name)
+
+collectstatic:
+	python -m manage collectstatic
