@@ -34,7 +34,7 @@ pipeline {
                         'CSRF_TRUSTED_ORIGINS'
                     ]
                     for (int i = 0; i < envVars.size(); i++) {
-                        def credential = credential(i)
+                        def credential = credentials(i)
                         sh 'echo ${i}=${credential} >> .env'
                     }
                 }
