@@ -17,27 +17,31 @@ pipeline {
         }
 
         stage('Create environment') {
+            environment {
+                DB_NAME=credentials('DB_NAME')
+                DB_USER=credentials('DB_USER')
+                DB_PASSWORD=credentials('DB_PASSWORD')
+                DB_HOST=credentials('DB_HOST')
+                DB_PORT=credentials('DB_PORT')
+                DJANGO_SECRET_KEY=credentials('DJANGO_SECRET_KEY')
+                DJANGO_DEBUG=credentials('DJANGO_DEBUG')
+                DISABLE_LOGGING=credentials('DISABLE_LOGGING')
+                DATABASE_ENGINE=credentials('DATABASE_ENGINE')
+                DJANGO_ALLOWED_HOSTS=credentials('DJANGO_ALLOWED_HOSTS')
+                CSRF_TRUSTED_ORIGINS=credentials('CSRF_TRUSTED_ORIGINS')
+            }
             steps {
-                sh 'rm -f .env'
-                script {
-                    def envVars = [
-                        'DB_NAME',
-                        'DB_USER',
-                        'DB_PASSWORD',
-                        'DB_HOST',
-                        'DB_PORT',
-                        'DJANGO_SECRET_KEY',
-                        'DJANGO_DEBUG',
-                        'DISABLE_LOGGING',
-                        'DATABASE_ENGINE',
-                        'DJANGO_ALLOWED_HOSTS',
-                        'CSRF_TRUSTED_ORIGINS'
-                    ]
-                    for (int i = 0; i < envVars.size(); i++) {
-                        def credential = credentials(envVars[i])
-                        sh "echo ${envVars[i]}=${credential} >> .env"
-                    }
-                }
+                sh 'echo DB_NAME=$DB_NAME > .env'
+                sh 'echo DB_USER=$DB_USER >> .env'
+                sh 'echo DB_PASSWORD=$DB_PASSWORD >> .env'
+                sh 'echo DB_HOST=$DB_HOST >> .env'
+                sh 'echo DB_PORT=$DB_PORT >> .env'
+                sh 'echo DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY >> .env'
+                sh 'echo DJANGO_DEBUG=$DJANGO_DEBUG >> .env'
+                sh 'echo DISABLE_LOGGING=$DISABLE_LOGGING >> .env'
+                sh 'echo DATABASE_ENGINE=$DATABASE_ENGINE >> .env'
+                sh 'echo DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS >> .env'
+                sh 'echo CSRF_TRUSTED_ORIGINS=$CSRF_TRUSTED_ORIGINS >> .env'
             }
         }
 
