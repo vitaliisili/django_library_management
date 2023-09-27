@@ -18,6 +18,7 @@ pipeline {
 
         stage('Create environment') {
             steps {
+                sh 'rm -f .env'
                 script {
                     def envVars = [
                         'DB_NAME',
@@ -32,10 +33,9 @@ pipeline {
                         'DJANGO_ALLOWED_HOSTS',
                         'CSRF_TRUSTED_ORIGINS'
                     ]
-                    sh 'rm -f .env'
-                    envVars.each { envVar ->
-                        def credential = credentials(envVar)
-                        sh "echo ${envVar}=${credential} >> .env"
+                    for (int i = 0; i < envVars.size(); i++) {
+                        def credential = credential(i)
+                        sh 'echo ${i}=${credential} >> .env'
                     }
                 }
             }
