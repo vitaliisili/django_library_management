@@ -47,7 +47,6 @@ pipeline {
 
         stage('Deploy application') {
             steps {
-                sh 'cat .env'
                 sh 'mkdir logs && touch logging.log'
                 sh 'sudo docker-compose -f docker-compose.yml up -d --build'
                 sh 'sudo docker cp library_management:/app/static ./static'
