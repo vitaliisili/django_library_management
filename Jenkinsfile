@@ -33,9 +33,9 @@ pipeline {
                         'DJANGO_ALLOWED_HOSTS',
                         'CSRF_TRUSTED_ORIGINS'
                     ]
-                    for (int i = 0; i <= envVars.size(); i++) {
+                    for (int i = 0; i < envVars.size(); i++) {
                         def credential = credentials(envVars[i])
-                        sh 'echo ${envVars[i]}=${credential} >> .env'
+                        sh "echo ${envVars[i]}=${credential} >> .env"
                     }
                 }
             }
