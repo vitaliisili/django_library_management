@@ -32,9 +32,7 @@ pipeline {
                         'DJANGO_ALLOWED_HOSTS',
                         'CSRF_TRUSTED_ORIGINS'
                     ]
-
                     sh 'rm -f .env'
-
                     envVars.each { envVar ->
                         def credential = credentials(envVar)
                         sh "echo ${envVar}=${credential} >> .env"
@@ -62,7 +60,5 @@ pipeline {
                 sh 'sudo docker rmi $(sudo docker images -f "dangling=true" -q) &>/dev/null'
             }
         }
-
     }
-
 }
