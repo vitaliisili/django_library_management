@@ -63,13 +63,13 @@ touch .env
 
 Step 5: Add to `.env` database and django environments:
 ```dotenv
-DB_NAME=example_database_name
-DB_USER=database_user
-DB_PASSWORD=strong_password
-DB_HOST=database_host
-DB_PORT=database_port
-DJANGO_SECRET_KEY=strong_secret_key_min_32_chars
-DJANGO_DEBUG=True
+DB_NAME=<database_name>
+DB_USER=<database_user>
+DB_PASSWORD=<strong_password>
+DB_HOST=<database_host>
+DB_PORT=<database_port>
+DJANGO_SECRET_KEY=<strong_secret_key_min_32_chars>
+DJANGO_DEBUG=<True>
 DATABASE_ENGINE=<database-engine>
 DJANGO_ALLOWED_HOSTS=<allowed hosts>
 CSRF_TRUSTED_ORIGINS=<trusted origins>
