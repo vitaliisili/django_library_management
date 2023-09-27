@@ -10,8 +10,7 @@ env.read_env(env_file)
 
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
-# DEBUG = bool(env('DJANGO_DEBUG'))
-DEBUG = env('DJANGO_DEBUG')
+DEBUG = bool(env('DJANGO_DEBUG'))
 
 ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(' ')
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS').split(' ')
