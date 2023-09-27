@@ -35,7 +35,7 @@ pipeline {
                     ]
                     for (int i = 0; i < envVars.size(); i++) {
                         def credential = credentials(i)
-                        sh 'echo ${i}=${credential} >> .env'
+                        'echo ${i}=${credential} >> .env'
                     }
                 }
             }
