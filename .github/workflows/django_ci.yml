@@ -25,6 +25,7 @@ jobs:
       DISABLE_LOGGING: ${{ secrets.DISABLE_LOGGING }}
       DATABASE_ENGINE: ${{ secrets.DATABASE_ENGINE }}
       DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
+      CSRF_TRUSTED_ORIGINS: ${{ secrets.CSRF_TRUSTED_ORIGINS }}
 
     services:
       database:
