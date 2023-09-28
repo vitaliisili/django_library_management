@@ -8,26 +8,21 @@ class CustomMiddleware:
 
     def __call__(self, request, *args, **kwargs):
         # Do something before the view or next middleware is calling
-        if 'checked' not in request.session:
-            self.stats(request.user_agent.os.family)
-            request.session['checked'] = True
-
         response = self.get_response(request)
-
         # Do something after the view or next middleware is calling
-
         return response
 
-    def stats(self, os_info):
-        print(os_info)
-
-    def process_view(self, request: HttpRequest, view_func, view_args, view_kwargs) -> None | HttpResponse:
+    def process_view(self, request, view_func, view_args, view_kwargs) -> None | HttpResponse:
         """
         # Is called just before Django calls the view
         NOTE: Accessing request.POST inside middleware before the view runs or in process_view()
         will prevent any view running after the middleware from being able to modify the upload
         handlers for the request, and should normally be avoided.
         """
+
+        if 'checked' not in request.session:
+            print(request.user_agent.os.family)
+            request.session['checked'] = True
         return None
 
     def process_exception(self, request: HttpRequest, exception: Exception) -> None | HttpResponse:
