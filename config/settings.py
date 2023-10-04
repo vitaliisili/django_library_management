@@ -120,7 +120,7 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'level': 'INFO',
             'formatter': 'verbose',
-            'filename': BASE_DIR / 'logs' / 'logging.log'
+            'filename': BASE_DIR / 'logging.log'
         }
     },
     'formatters': {
