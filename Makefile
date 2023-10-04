@@ -34,7 +34,7 @@ startapp:
 	python -m manage startapp $(app)
 
 test:
-	python -m manage test
+	python -m manage test -v 3
 
 backup:
 	pg_dump -U $(DB_USER) -d $(DB_NAME) -f $(DB_BACK_UP_DIR)/$(file_name)
