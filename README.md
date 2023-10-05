@@ -15,22 +15,26 @@ simplify the borrowing and returning process, and provide an intuitive catalog s
 
 
 ## Key Features
-1. User-Friendly Catalog System
+1. #### User-Friendly Catalog System
 - Easily add, update, and categorize books, journals, and other materials in the library's collection.
 - Search and browse the catalog with advanced filtering options.
 - View detailed information about each item, including author, publication date, and availability.
-2. Patron Management
-- Register new patrons and maintain their profiles.
-- Keep track of borrowing history, due dates, and fines.
-- Notify patrons of overdue materials and upcoming due dates via email or SMS.
-3. Efficient Checkouts and Returns
-- Streamline the checkout process using barcode scanning or manual entry.
-- Generate receipts and due date reminders for borrowers.
-- Simplify the return process and automatically update the item's availability status.
-4. Administrative Dashboard
+2. #### User Authentication and Authorization:
+- User registration and login.
+- Different user roles (admin, librarian, member) with varying levels of access.
+3. #### Book Management:
+- Add, edit, and delete books with details like title, author, genre, ISBN, and publication date.
+- Track the availability status of each book (available, checked out, lost, etc.).
+- Search and filter books based on different criteria.
+4. #### Administrative Dashboard
 - Provide librarians with a centralized dashboard for managing library operations.
-- Monitor real-time statistics, including inventory levels, patron activity, and fines.
-- Customize access levels for library staff with role-based permissions.
+- Monitor real-time statistics, including inventory levels, and fines.
+5. #### Admin Dashboard:
+- Overview of total books, members, and current activities.
+- Graphical representation of book availability and borrowing trends.
+6. #### Search and Filters:
+- Implement advanced search functionality, allowing users to search by title, author, genre, or keyword.
+- Provide filters for refining search results (e.g., sort by author, genre, publication year).
 
 
 ## How To Start
