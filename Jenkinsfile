@@ -27,7 +27,7 @@ pipeline {
                 DJANGO_DEBUG=credentials('DJANGO_DEBUG')
                 DISABLE_LOGGING=credentials('DISABLE_LOGGING')
                 DATABASE_ENGINE=credentials('DATABASE_ENGINE')
-                DJANGO_ALLOWED_HOSTS=credentials('DJANGO_ALLOWED_HOSTS')
+                DJANGO_ALLOWED_HOSTS="*"
                 CSRF_TRUSTED_ORIGINS=credentials('CSRF_TRUSTED_ORIGINS')
             }
             steps {
