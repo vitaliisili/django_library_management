@@ -24,7 +24,7 @@ pipeline {
                 DB_HOST=credentials('DB_HOST')
                 DB_PORT=credentials('DB_PORT')
                 DJANGO_SECRET_KEY=credentials('DJANGO_SECRET_KEY')
-                DJANGO_DEBUG=credentials('DJANGO_DEBUG')
+                DJANGO_DEBUG=True
                 DISABLE_LOGGING=credentials('DISABLE_LOGGING')
                 DATABASE_ENGINE=credentials('DATABASE_ENGINE')
                 DJANGO_ALLOWED_HOSTS=credentials('DJANGO_ALLOWED_HOSTS')
