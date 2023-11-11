@@ -19,7 +19,7 @@ install:
 	pip install -r requirements.txt
 
 showmigrations:
-	python -m manage.py showmigrations
+	python -m manage showmigrations
 
 sqlmigrate:
 	python -m manage sqlmigrate $(app) $(migration)
